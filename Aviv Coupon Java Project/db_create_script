@@ -1,0 +1,16 @@
+Tables:
+=======
+create table Company ( ID bigint not null primary key, Comp_Name varchar(20) not null, Password varchar(10) not null, Email varchar(20) not null)
+
+create table Customer( ID bigint not null primary key, Cust_Name varchar(20) not null, Password varchar(10) not null)
+
+create table Coupon( ID bigint not null primary key, Title varchar(30) not null, Start_Date date not null, End_Date date not null, Amount integer not null, Type varchar(20) not null, Message varchar(100) not null, Price double not null, Image varchar(50) not null)
+
+create table Company_Coupon (Comp_ID bigint not null, Coupon_ID bigint not null)
+
+create table Customer_Coupon (Cust_ID bigint not null, Coupon_ID bigint not null)
+
+
+===============================================
+===============================================
+
