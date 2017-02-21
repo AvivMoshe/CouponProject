@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+   <head>
+	 <title>Admin Page</title>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+     <script src="Scripts/Controller.js"></script>
+     <link rel="stylesheet" type="text/css" href="CSS/adminStyle.css">
+   </head>
+   
+ <body>
+  <div style="margin-left: 5%" ng-app="myApp">
+
+	<div ng-controller="AdminCompanyMethods">
+     <h1><ins>Companies Management:</ins></h1>
+	
+        <button class="button2" ng-click="createCompanyDetails()" onclick="resetFunction()">Create Company</button>
+		<form id="addForm" ng-show="createForm">
+		</br>
+			<input type="number" ng-model="addIdComp" placeholder="ID" required="required">
+			<input type="text" ng-model="addNameComp" placeholder="Name" required="required" > 
+			<input type="text" ng-model="addPassComp" placeholder="Password" required="required">
+			<input type="email" ng-model="addEmailComp" placeholder="E-Mail" required="required">
+			<br>	
+			<button class="button3" ng-click="addCompany()" type="submit">Add</button>
+			<button type="reset" class="button3">Cancel</button></br>
+		{{createcomp}}
+		</form>
+		<br>
+		<br>
+		
+    
+	    <button class="button2" ng-click="updateCompanyDetails()" onclick="resetFunction()">Update Company</button>
+		<form id="updateForm" ng-show="updateCompanyForm">
+		</br>
+			<input type="number" ng-model="updateID" placeholder="ID" required="required">
+			<input type="text" ng-model="updatePass" placeholder="Password" required="required">
+			<input type="email" ng-model="updateEmail" placeholder="E-Mail" required="required">
+			<br>
+		<button class="button3" ng-click="updateCompany()" type="submit">Update</button></br>
+		{{update}}
+		</form>
+		<br>
+		<br>
+		
+   
+		<button class="button2" ng-click="getCompanyDetails()" onclick="resetFunction()">Get Company By ID</button>
+		<form id="getForm" ng-show="getCompanyForm">
+		</br>
+		<input type="number" ng-model="InsertId" placeholder="Company's ID">
+		<button class="button3" ng-click="getId()" type="submit">Search</button></br>
+	    <table border="1" ng-show="getCompanyFormTable">
+		<tr>
+		<th><ins>ID</ins></th>
+		<th><ins>Company's Name</ins></th>
+		<th><ins>Password</ins></th>
+		<th><ins>E-Mail</ins></th>
+		</tr>
+		<tr>
+		<td>{{content.id}}</td>
+		<td>{{content.compName}}</td>
+		<td>{{content.password}}</td>
+		<td>{{content.email}}</td>
+		</tr>
+		</table>
+		</form>
+		{{failedmessage}}
+		<br>
+		<br>
+		
+
+		<button style="background-color:red" class="button2" ng-click="delCompanyDetails()" onclick="resetFunction()">Delete Company</button>
+		<form id="delForm" ng-show="deleteForm">
+		</br>
+		<input type="number" ng-model="delID" placeholder="Company's ID">
+		<button class="button3" ng-click="delCompany()" type="submit">Remove</button></br>
+		{{del}}
+		</form>
+		<br>
+		<br>
+		
+		
+		<form name="getAll">
+		<button class="button2" ng-click="getAllComp()" type="submit">Get All Companies</button>
+		<table border="1" ng-show="getAllCompDetails">
+		<tr>
+		<th><ins>ID</ins></th>
+		<th><ins>Company's Name</ins></th>
+		<th><ins>Password</ins></th>
+		<th><ins>E-Mail</ins></th>
+		</tr>
+		 <tr ng-repeat="x in company">
+		 	<td>{{x.id}}</td>
+		 	<td>{{x.compName}}</td>
+		 	<td>{{x.password}}</td>
+		 	<td>{{x.email}}</td>
+		</tr>
+		</table>
+		</form>
+	 </div>	
+	
+	
+	<div ng-controller="AdminCustomerMethods">
+		<br>
+		<br>
+        <h1><ins>Customer Management:</ins></h1>
+    
+        <button class="button2" ng-click="createCustomerDetails()" onclick="resetFunction()">Create Customer</button>
+		<form id="addCust" ng-show="createForm">
+		</br>
+			<input type="number" ng-model="addIdCust" placeholder="ID" required="required">
+			<input type="text" ng-model="addNameCust" placeholder="Name" required="required" > 
+			<input type="text" ng-model="addPassCust" placeholder="Password" required="required">
+			<br>	
+			<button class="button3" ng-click="addCustomer()" type="submit" ng-disabled="!addCust.$valid" >Add</button>
+			<button type="reset" class="button3">Cancel</button></br>
+		{{createcust}}
+		</form>
+		<br>
+		<br>
+	
+
+	    <button class="button2" ng-click="updateCustomerDetails()" onclick="resetFunction()">Update Customer</button>
+		<form id="updateCustForm" ng-show="updateForm">
+		</br>
+			<input type="number" ng-model="updateIdCust" placeholder="ID" required="required">
+			<input type="text" ng-model="updatePassCust" placeholder="Password">
+			<br>
+			<button class="button3" ng-click="updateCustomer()" type="submit">Update</button></br>
+		{{updatecust}}
+		</form>
+		<br>
+		<br>
+	
+		
+	    <button class="button2" ng-click="getCustomerDetails()" onclick="resetFunction()">Get Customer by ID</button>
+		<form id="getCustForm" ng-show="getForm">
+		</br>
+			<input type="number" ng-model="getCustId" placeholder="ID" required="required">
+		<button class="button3" ng-click="getCust()" type="submit">Search</button></br>
+		<table border="1">
+		<tr>
+		<th><ins>ID</ins></th>
+		<th><ins>Customer's Name</ins></th>
+		<th><ins>Password</ins></th>
+		</tr>
+		<tr>
+		<td>{{getcust.id}}</td>
+		<td>{{getcust.custName}}</td>
+		<td>{{getcust.password}}</td>
+		</tr>
+		</table>
+		</form>
+		<br>
+		<br>		
+		
+		
+	    <button style="background-color:red" class="button2" ng-click="delCustomerDetails()" onclick="resetFunction()">Delete Customer</button>
+		<form id="delForm" ng-show="deleteForm">
+		</br>
+		<input type="number" ng-model="delCustID" placeholder="Customer's ID">
+		<button class="button3" ng-click="delCustomer()" type="submit">Remove</button></br>
+		{{delcust}}
+		</form>
+		<br>
+		<br>
+		
+
+		
+		<form name="getAllCustomer">
+        <button class="button2" ng-click="getAllCust()">Get All Customers</button>
+		<table border="1" ng-show="getAllCustDetails">
+		 <tr>
+		  <th><ins>ID</ins></th>
+		  <th><ins>Customer's Name</ins></th>
+		  <th><ins>Password</ins></th>
+		 </tr>
+		 <tr ng-repeat="x in customer">
+		 	<td>{{x.id}}</td>
+		 	<td>{{x.custName}}</td>
+		 	<td>{{x.password}}</td>
+		 </tr>
+		</table>
+		</form>
+		<br>
+		<br>
+		
+		
+    <h1><ins>Coupons:</ins></h1>
+		<form name="getAllCouponForm">
+		<button class="button2" ng-click="getAllCoupons()" type="submit">Get All Coupons</button>
+		<table border="1" ng-show="getAllCoupDetails">
+	     <tr>
+		  <th><ins>ID</ins></th>
+		  <th><ins>Title</ins></th>
+		  <th><ins>Message</ins></th>
+		  <th><ins>Amount</ins></th>
+		  <th><ins>Price</ins></th>
+		  <th><ins>Type</ins></th>
+		  <th><ins>Start Date</ins></th>
+		  <th><ins>End Date</ins></th>
+		  <th><ins>Image</ins></th>
+		 </tr>
+		 <tr ng-repeat="x in coupon">
+		 	<td>{{x.id}}</td>
+		 	<td>{{x.title}}</td>
+		 	<td>{{x.message}}</td>
+		 	<td>{{x.amount}}</td>
+		 	<td>{{x.price}}</td>
+		 	<td>{{x.type}}</td>
+		 	<td>{{x.startDate}}</td>
+		 	<td>{{x.endDate}}</td>
+		 	<td>{{x.image}}</td>
+		</tr>
+		</table>
+		</form>
+		<br>
+		<br>
+	</div>
+	
+	
+	
+  </div>
+ </body>
+</html>

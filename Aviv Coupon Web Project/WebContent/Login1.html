@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>Login page!</title>
+   <link rel="stylesheet" type="text/css" href="CSS/loginStyle.css">
+  </head>
+  
+  <body>
+  <h1 style="color:white;"><ins>Welcome To Aviv's Coupon Project!</ins></h1>
+   <div class="login">
+	<h1>Login</h1>
+    <form action="login" method="post">
+    	<input type="text" name="user" placeholder="Username" required="required" />
+        <input type="password" name="pass" placeholder="Password" required="required" />
+        <select name="role" >
+				<option value="ADMIN" selected>Admin</option>
+				<option value="COMPANY">Company</option>
+				<option value="CUSTOMER">Customer</option>
+			</select><br/>
+        <button type="submit">Login</button>
+    </form>
+   </div>
+  </body>
+</html>
